@@ -12,5 +12,7 @@ public interface TaskMapper {
 
 	@Select("select * from todolist.tasks")
 	List<Task> findAll();
+	
+	List<Task> findTaskById(String id);
 
 }

@@ -3,6 +3,7 @@ package com.example.MyBatisSpringBoot.controllers;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.MyBatisSpringBoot.domain.Task;
@@ -17,9 +18,14 @@ public class TaskController {
 		this.taskMapper = taskMapper;
 	}
 	
-	@GetMapping({"/", "/tasks"})
+	@GetMapping({"/"})
 	public List<Task> getAllTask(){
 		return taskMapper.findAll();
+	}
+	
+	@GetMapping({"/tasks/{id}"})
+	public List<Task> getTaskById(@PathVariable("id") String id){
+		return taskMapper.findTaskById(id);
 	}
 
 }
